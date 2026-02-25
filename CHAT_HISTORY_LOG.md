@@ -25,3 +25,16 @@
   - Unity 作業中に止まった旧チャット履歴の確認
 - Notes:
   - 今後は開始時に `AGENTS.md` と履歴メモを先に確認する運用
+
+- Date: 2026-02-22 (discovered on 2026-02-25)
+- Topic: Unity移行と拡張機能利用の実作業ログ特定
+- User Request: Unity拡張機能を使ってゲーム品質を上げる流れと、該当チャット履歴の特定
+- Done:
+  - 該当履歴を特定: `/Users/yamazakimanabu/.codex/sessions/2026/02/21/rollout-2026-02-21T22-20-47-019c805c-21c6-7980-bffd-5b4c240546eb.jsonl`
+  - ユーザー発話を確認: Unity拡張機能追加後の品質改善要望（line 5629）
+  - ユーザー発話を確認: Unity移行で進める明示指示（line 5722）
+  - 実装ログを確認: `unity-shooter/` 追加、`Tools > Starline > Setup Scene` 系のワンクリック化
+- Pending:
+  - 「コンテキストを圧縮しています」の停止現象そのものが出た元チャットの完全特定（文字列一致では未発見）
+- Notes:
+  - 上記履歴は、Unity作業の主ログとして次回開始時に優先参照する
