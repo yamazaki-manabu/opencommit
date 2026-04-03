@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios';
+import { createJsonHttpClient, HttpClient } from '../utils/httpClient';
 import { OpenAI } from 'openai';
 import { normalizeEngineError } from '../utils/engineErrorHandler';
 import { removeContentTags } from '../utils/removeContentTags';
@@ -8,12 +8,12 @@ interface FlowiseAiConfig extends AiEngineConfig {}
 
 export class FlowiseEngine implements AiEngine {
   config: FlowiseAiConfig;
-  client: AxiosInstance;
+  client: HttpClient;
 
-  constructor(config) {
+  constructor(config: FlowiseAiConfig) {
     this.config = config;
-    this.client = axios.create({
-      url: `${config.baseURL}/${config.apiKey}`,
+    this.client = createJsonHttpClient({
+      baseURL: `${config.baseURL}/${config.apiKey}`,
       headers: { 'Content-Type': 'application/json' }
     });
   }

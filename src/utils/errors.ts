@@ -116,7 +116,7 @@ export function isModelNotFoundError(error: unknown): boolean {
       return true;
     }
 
-    // Check for 404 status in axios/fetch errors
+    // Check for 404 status in HTTP and fetch-style errors
     if (
       'status' in (error as any) &&
       (error as any).status === 404 &&

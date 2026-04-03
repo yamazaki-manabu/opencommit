@@ -1,6 +1,6 @@
-import axios, { AxiosInstance } from 'axios';
 import { OpenAI } from 'openai';
 import { normalizeEngineError } from '../utils/engineErrorHandler';
+import { createJsonHttpClient, HttpClient } from '../utils/httpClient';
 import { removeContentTags } from '../utils/removeContentTags';
 import { AiEngine, AiEngineConfig } from './Engine';
 
@@ -8,12 +8,12 @@ interface MLXConfig extends AiEngineConfig {}
 
 export class MLXEngine implements AiEngine {
   config: MLXConfig;
-  client: AxiosInstance;
+  client: HttpClient;
 
-  constructor(config) {
+  constructor(config: MLXConfig) {
     this.config = config;
-    this.client = axios.create({
-      url: config.baseURL
+    this.client = createJsonHttpClient({
+      baseURL: config.baseURL
         ? `${config.baseURL}/${config.apiKey}`
         : 'http://localhost:8080/v1/chat/completions',
       headers: { 'Content-Type': 'application/json' }
@@ -31,10 +31,7 @@ export class MLXEngine implements AiEngine {
       stream: false
     };
     try {
-      const response = await this.client.post(
-        this.client.getUri(this.config),
-        params
-      );
+      const response = await this.client.post<any>('', params);
 
       const choices = response.data.choices;
       const message = choices[0].message;

@@ -1,16 +1,17 @@
 import OpenAI from 'openai';
-import axios, { AxiosInstance } from 'axios';
 import { normalizeEngineError } from '../utils/engineErrorHandler';
+import { createJsonHttpClient, HttpClient } from '../utils/httpClient';
 import { AiEngine, AiEngineConfig } from './Engine';
 
 interface AimlApiConfig extends AiEngineConfig {}
 
 export class AimlApiEngine implements AiEngine {
-  client: AxiosInstance;
+  client: HttpClient;
 
   constructor(public config: AimlApiConfig) {
-    this.client = axios.create({
-      baseURL: config.baseURL || 'https://api.aimlapi.com/v1/chat/completions',
+    this.client = createJsonHttpClient({
+      baseURL:
+        config.baseURL || 'https://api.aimlapi.com/v1/chat/completions',
       headers: {
         Authorization: `Bearer ${config.apiKey}`,
         'HTTP-Referer': 'https://github.com/di-sukharev/opencommit',
@@ -25,7 +26,7 @@ export class AimlApiEngine implements AiEngine {
     messages: Array<OpenAI.Chat.Completions.ChatCompletionMessageParam>
   ): Promise<string | null> => {
     try {
-      const response = await this.client.post('', {
+      const response = await this.client.post<any>('', {
         model: this.config.model,
         messages
       });

@@ -1,16 +1,16 @@
 import OpenAI from 'openai';
-import axios, { AxiosInstance } from 'axios';
 import { normalizeEngineError } from '../utils/engineErrorHandler';
+import { createJsonHttpClient, HttpClient } from '../utils/httpClient';
 import { removeContentTags } from '../utils/removeContentTags';
 import { AiEngine, AiEngineConfig } from './Engine';
 
 interface OpenRouterConfig extends AiEngineConfig {}
 
 export class OpenRouterEngine implements AiEngine {
-  client: AxiosInstance;
+  client: HttpClient;
 
   constructor(public config: OpenRouterConfig) {
-    this.client = axios.create({
+    this.client = createJsonHttpClient({
       baseURL: 'https://openrouter.ai/api/v1/chat/completions',
       headers: {
         Authorization: `Bearer ${config.apiKey}`,
@@ -25,7 +25,7 @@ export class OpenRouterEngine implements AiEngine {
     messages: Array<OpenAI.Chat.Completions.ChatCompletionMessageParam>
   ): Promise<string | null> => {
     try {
-      const response = await this.client.post('', {
+      const response = await this.client.post<any>('', {
         model: this.config.model,
         messages
       });

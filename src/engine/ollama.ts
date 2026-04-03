@@ -1,6 +1,6 @@
-import axios, { AxiosInstance } from 'axios';
 import { OpenAI } from 'openai';
 import { normalizeEngineError } from '../utils/engineErrorHandler';
+import { createJsonHttpClient, HttpClient } from '../utils/httpClient';
 import { removeContentTags } from '../utils/removeContentTags';
 import { AiEngine, AiEngineConfig } from './Engine';
 
@@ -8,19 +8,18 @@ interface OllamaConfig extends AiEngineConfig {}
 
 export class OllamaEngine implements AiEngine {
   config: OllamaConfig;
-  client: AxiosInstance;
+  client: HttpClient;
 
-  constructor(config) {
+  constructor(config: OllamaConfig) {
     this.config = config;
 
-    // Combine base headers with custom headers
     const headers = {
       'Content-Type': 'application/json',
       ...config.customHeaders
     };
 
-    this.client = axios.create({
-      url: config.baseURL
+    this.client = createJsonHttpClient({
+      baseURL: config.baseURL
         ? `${config.baseURL}/${config.apiKey}`
         : 'http://localhost:11434/api/chat',
       headers
@@ -37,10 +36,7 @@ export class OllamaEngine implements AiEngine {
       stream: false
     };
     try {
-      const response = await this.client.post(
-        this.client.getUri(this.config),
-        params
-      );
+      const response = await this.client.post<any>('', params);
 
       const { message } = response.data;
       let content = message?.content;

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   AuthenticationError,
   InsufficientCreditsError,
@@ -14,11 +13,6 @@ function getStatusCode(error: unknown): number | null {
   // Direct status property (common in API SDKs)
   if (typeof (error as any)?.status === 'number') {
     return (error as any).status;
-  }
-
-  // Axios-style errors
-  if (axios.isAxiosError(error)) {
-    return error.response?.status ?? null;
   }
 
   // Response object with status

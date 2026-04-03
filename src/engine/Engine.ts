@@ -1,9 +1,9 @@
 import AnthropicClient from '@anthropic-ai/sdk';
 import { OpenAIClient as AzureOpenAIClient } from '@azure/openai';
 import { GoogleGenerativeAI as GeminiClient } from '@google/generative-ai';
-import { AxiosInstance as RawAxiosClient } from 'axios';
 import { OpenAI as OpenAIClient } from 'openai';
 import { Mistral as MistralClient } from '@mistralai/mistralai';
+import { HttpClient as RawHttpClient } from '../utils/httpClient';
 
 export interface AiEngineConfig {
   apiKey: string;
@@ -18,7 +18,7 @@ type Client =
   | OpenAIClient
   | AzureOpenAIClient
   | AnthropicClient
-  | RawAxiosClient
+  | RawHttpClient
   | GeminiClient
   | MistralClient;
 
