@@ -1,0 +1,378 @@
+# Instincts generated from https://github.com/yamazaki-manabu/opencommit
+# Generated: 2026-04-03T13:59:02.938Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: opencommit-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/yamazaki-manabu/opencommit
+---
+
+# Opencommit Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: build
+
+## Evidence
+
+- 1 commits analyzed
+- Detected conventional commit pattern
+- Examples: build(deps): bump the npm_and_yarn group across 4 directories with 9 updates
+
+---
+id: opencommit-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/yamazaki-manabu/opencommit
+---
+
+# Opencommit Commit Length
+
+## Action
+
+Write moderate-length commit messages (~76 characters)
+
+## Evidence
+
+- Average commit message length: 76 chars
+- Based on 1 commits
+
+---
+id: opencommit-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/yamazaki-manabu/opencommit
+---
+
+# Opencommit Naming Files
+
+## Action
+
+Use kebab-case naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: kebab-case
+
+---
+id: opencommit-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/yamazaki-manabu/opencommit
+---
+
+# Opencommit Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: opencommit-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/yamazaki-manabu/opencommit
+---
+
+# Opencommit Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: opencommit-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/yamazaki-manabu/opencommit
+---
+
+# Opencommit Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: opencommit-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/yamazaki-manabu/opencommit
+---
+
+# Opencommit Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.ts
+
+## Evidence
+
+- File pattern: *.test.ts
+- Consistent across test files
+
+---
+id: opencommit-test-types
+trigger: "when planning tests for a feature"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/yamazaki-manabu/opencommit
+---
+
+# Opencommit Test Types
+
+## Action
+
+Write unit, e2e tests to match project standards
+
+## Evidence
+
+- Test types detected: unit, e2e
+- Coverage config: no
+
+---
+id: opencommit-instinct-filename-kebab-case
+trigger: "When creating or renaming a file"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Filename Kebab Case
+
+## Action
+
+Use kebab-case for the filename
+
+## Evidence
+
+- Pattern in namingConventions.files
+
+---
+id: opencommit-instinct-function-camelCase
+trigger: "When defining a function"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Function CamelCase
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.functions
+
+---
+id: opencommit-instinct-class-PascalCase
+trigger: "When defining a class"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Class PascalCase
+
+## Action
+
+Name the class using PascalCase
+
+## Evidence
+
+- Pattern in namingConventions.classes
+
+---
+id: opencommit-instinct-constant-SCREAMING_SNAKE_CASE
+trigger: "When declaring a constant"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Constant SCREAMING_SNAKE_CASE
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Pattern in namingConventions.constants
+
+---
+id: opencommit-instinct-import-relative
+trigger: "When importing modules"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Import Relative
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in importStyle
+
+---
+id: opencommit-instinct-export-named
+trigger: "When exporting modules or functions"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Export Named
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle
+
+---
+id: opencommit-instinct-test-file-pattern
+trigger: "When creating a test file"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Test File Pattern
+
+## Action
+
+Name the file with a .test.ts suffix
+
+## Evidence
+
+- Pattern in testing.filePattern
+
+---
+id: opencommit-instinct-test-types
+trigger: "When writing tests"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Test Types
+
+## Action
+
+Include both unit and e2e tests as appropriate
+
+## Evidence
+
+- Pattern in testing.testTypes
+
+---
+id: opencommit-instinct-test-location
+trigger: "When adding or organizing tests"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Test Location
+
+## Action
+
+Place test files in the separate 'test' directory
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation
+- Presence of 'test' folder
+
+---
+id: opencommit-instinct-commit-conventional-build
+trigger: "When committing dependency or build-related changes"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Commit Conventional Build
+
+## Action
+
+Use the 'build' prefix in the commit message following the conventional commit format
+
+## Evidence
+
+- Pattern in commits.prefixes
+- Example: 'build(deps): bump the npm_and_yarn group...'
+
+---
+id: opencommit-instinct-commit-length
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: yamazaki-manabu/opencommit
+---
+
+# Opencommit Instinct Commit Length
+
+## Action
+
+Keep the commit message concise, around 76 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength
+
